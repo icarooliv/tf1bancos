@@ -164,7 +164,7 @@ INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idCom
 VALUES (14, 54.00, 165, 'O-', 'Paciente após dois AVC seguidos, o paciente apresenta sequelas de paralisia no lado esquerdo do corpo, dificulade de engolir e quadro depressivo.', 2);
 
 INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idComplexidade) 
-VALUES (15, 73.00, 175, 'AB', 'Diagnóstico de transtorno obsessivo-compulsivo com predominância de comportamentos compulsivos. Paciente apresenta também sintomas de TAG (Transtorno de ansiedade generalizada) devido aos rituais de repetição e pensamentos intrusivos que o TOC produz juntamente com um quadro de depressão grave', 2);
+VALUES (15, 73.00, 175, 'AB', 'Diagnóstico de transtorno obsessivo-compulsivo com predominância de comportamentos compulsivos. Paciente apresenta também sintomas de TAG (Transtorno de ansiedade generalizada) devido aos rituais de repetição e pensamentos intrusivos que o TOC produz juntamente com um quadro de depressão grave', 3);
 
 -- INSERÇÃO DE PATOLOGIAS --
 INSERT INTO PATOLOGIA(cid, nome) VALUES ('I120', 'Doença renal hipertensiva com insuficiência renal');
@@ -267,10 +267,86 @@ INSERT INTO TIPOVISITA(nome) VALUES ('EXAME MEDICO');
 INSERT INTO TIPOVISITA(nome) VALUES ('SESSÃO DE PSICOTERAPIA');
 
 -- INSERÇAO DE VISITAS -- 
+-- Paciente id 12 -- visitas de 12h
+
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
--- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
--- VALUES ('2018-03-02 7:00:00', '2018-03-02 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-02 7:00:00', '2018-03-02 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-03 7:00:00', '2018-03-03 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-04 7:00:00', '2018-03-04 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-05 7:00:00', '2018-03-05 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-06 7:00:00', '2018-03-06 19:00:00', 3, 12, 'DF/124623', 5);
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-07 7:00:00', '2018-03-07 19:00:00', 3, 12, 'DF/124623', 5);
+
+-- Paciente id 15 -- visitas de 24h plantao 24/72 para as tecnicas com visita periodica da psicologa
+
+-- 1 semana
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-07 7:00:00', '2018-03-08 7:00:00', 3, 15, 'DF/9431', 5); 
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-07 13:00:00', '2018-03-07 15:00:00', 5, 15, 'DF/0015088', 3); -- psicologa
+
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-08 7:00:00', '2018-03-09 7:00:00', 3, 15, 'DF/63271', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-09 7:00:00', '2018-03-10 7:00:00', 3, 15, 'DF/179653', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-10 7:00:00', '2018-03-11 7:00:00', 3, 15, 'DF/125223', 5);  
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-11 7:00:00', '2018-03-12 7:00:00', 3, 15, 'DF/9431', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-12 7:00:00', '2018-03-13 7:00:00', 3, 15, 'DF/63271', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-13 7:00:00', '2018-03-14 7:00:00', 3, 15, 'DF/179653', 5); 
+
+
+-- 2 semana
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-14 7:00:00', '2018-03-15 7:00:00', 3, 15, 'DF/125223', 5);  
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-14 13:00:00', '2018-03-14 15:00:00', 5, 15, 'DF/0015088', 3); -- psicologa
+
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-15 7:00:00', '2018-03-16 7:00:00', 3, 15, 'DF/9431', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-16 7:00:00', '2018-03-17 7:00:00', 3, 15, 'DF/63271', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-18 7:00:00', '2018-03-19 7:00:00', 3, 15, 'DF/179653', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-19 7:00:00', '2018-03-20 7:00:00', 3, 15, 'DF/125223', 5);  
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-20 7:00:00', '2018-03-21 7:00:00', 3, 15, 'DF/9431', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-21 7:00:00', '2018-03-22 7:00:00', 3, 15, 'DF/63271', 5); 
+
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-22 7:00:00', '2018-03-23 7:00:00', 3, 15, 'DF/179653', 5); 
+
+
 -- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 -- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
 -- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
@@ -280,4 +356,4 @@ VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
 -- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 -- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
 
--- FALTA CRIAR PRESCRIÇÕES, EVOLUÇAO E AVALIAÇÕES -- 
+-- FALTA CRIAR VISITAS, PRESCRIÇÕES, EVOLUÇAO E AVALIAÇÕES -- 
