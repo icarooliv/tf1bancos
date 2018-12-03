@@ -155,7 +155,7 @@ VALUES(11, 1, 5, '52476540073', 'DF/63271', '186319-3', 1, 'Banco do Brasil', '7
 
 -- INSERÇÃO DE PACIENTES --
 INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idComplexidade) 
-VALUES (12, 68.00, 168, 'O+', 'Exame apresenta parênquima pulmonar apresentando neoplasia de crescimento infiltrativo. Paciente apresenta ausencia de infiltração da pleura visceral. Margem cirurgica de ressecçao livre porém microscópica.', 3);
+VALUES (12, 68.00, 168, 'O+', 'Exame apresenta parênquima pulmonar apresentando neoplasia de crescimento infiltrativo. Paciente apresenta ausencia de infiltração da pleura visceral. Margem cirurgica de ressecçao livre porém microscópica.', 1);
 
 INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idComplexidade) 
 VALUES (13, 90.00, 180, 'AB', 'Paciente apresenta inúmeras pedras nos rins, caracterizando as patologias apresentadas.', 3);
@@ -266,7 +266,18 @@ INSERT INTO TIPOVISITA(nome) VALUES ('PLANTÃO');
 INSERT INTO TIPOVISITA(nome) VALUES ('EXAME MEDICO');
 INSERT INTO TIPOVISITA(nome) VALUES ('SESSÃO DE PSICOTERAPIA');
 
--- FALTA CRIAR VISITAS, PRESCRIÇÕES, EVOLUÇAO E AVALIAÇÕES -- 
+-- INSERÇAO DE VISITAS -- 
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-03-02 7:00:00', '2018-03-02 19:00:00', 3, 12, 'DF/124623', 5);
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
 
-
-
+-- FALTA CRIAR PRESCRIÇÕES, EVOLUÇAO E AVALIAÇÕES -- 
