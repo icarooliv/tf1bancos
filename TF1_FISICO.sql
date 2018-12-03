@@ -1,7 +1,6 @@
-
--- ---------------------------- TF1 aval --------------------------- --
+-- ---------------------------- TF1 aval -------------------------- --
 --                                                                  --
---                  SCRIPT DE CRIACAO (DDL)                     --
+--                   SCRIPT DE CRIACAO (DDL)                        --
 --                                                                  --
 -- Data Criacao ..........: 29/11/2018                              --
 -- Autor(es) .............: Lucas Machado de Moura e Silva          --
@@ -12,9 +11,9 @@
 -- Data Ultima Alteracao ..:                                        --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---      => 22 Tabelas                                           --
+--         => 22 Tabelas                                            --
 --                                                                  --
--- ----------------------------------------------------------------- --
+-- ---------------------------------------------------------------- --
 
 -- CREATE DATABASE IF NOT EXISTS homecare
 -- DEFAULT CHARACTER SET utf8
