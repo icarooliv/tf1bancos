@@ -47,15 +47,6 @@ INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6129939898', '6784787200
 INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6135496613', '95133685000150');
 INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6137525509', '60604513000133');
 
--- INSERÇÃO DE MEDICAMENTOS --
-INSERT INTO MEDICAMENTO(nome) VALUES ('ACICLOVIR');
-INSERT INTO MEDICAMENTO(nome) VALUES ('ÁCIDO ACETILSALICÍLICO');
-INSERT INTO MEDICAMENTO(nome) VALUES ('SOLUÇÃO PARA DIÁLISE PERITONIAL');
-INSERT INTO MEDICAMENTO(nome) VALUES ('TIMOLOL');
-INSERT INTO MEDICAMENTO(nome) VALUES ('DIPIRONA SÓDICA');
-INSERT INTO MEDICAMENTO(nome) VALUES ('LEXOTAN');
-INSERT INTO MEDICAMENTO(nome) VALUES ('CITALAX');
-
 -- INSERÇÃO DE PESSOAS --
 INSERT INTO PESSOA(tituloEleitor, dataNascimento, rg, cpf, nome, cep, cidade, rua, numero, bairro, sexo, idEstadoCivil) 
 VALUES ('505477022054DF', '1986-10-30', '278251122', '38813276141', 'Sebastião Raul Iago da Conceição', '49070340', 'Brasília', 'Rua das Lages', '793', 'Engenho das Lages (Gama)', 'M', 1);
@@ -259,6 +250,16 @@ VALUES ('DF/124623', 5, 3);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
 VALUES ('DF/124623', 5, 2);
 
+-- INSERÇÃO DE MEDICAMENTOS --
+INSERT INTO MEDICAMENTO(nome) VALUES ('ACICLOVIR');
+INSERT INTO MEDICAMENTO(nome) VALUES ('ÁCIDO ACETILSALICÍLICO');
+INSERT INTO MEDICAMENTO(nome) VALUES ('SOLUÇÃO PARA DIÁLISE PERITONIAL');
+INSERT INTO MEDICAMENTO(nome) VALUES ('TIMOLOL');
+INSERT INTO MEDICAMENTO(nome) VALUES ('DIPIRONA SÓDICA');
+INSERT INTO MEDICAMENTO(nome) VALUES ('LEXOTAN');
+INSERT INTO MEDICAMENTO(nome) VALUES ('CITALAX');
+
+
 -- INSERÇAO DE TIPOVISITA -- 
 INSERT INTO TIPOVISITA(nome) VALUES ('CONSULTA DE ROTINA');
 INSERT INTO TIPOVISITA(nome) VALUES ('SESSÃO DE FISIOTERAPIA');
@@ -296,11 +297,30 @@ VALUES ('2018-03-07 7:00:00', '2018-03-07 19:00:00', 3, 12, 'DF/124623', 5);
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 VALUES ('2018-03-07 7:00:00', '2018-03-08 7:00:00', 3, 15, 'DF/9431', 5); 
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-07 13:00:00', '2018-03-07 15:00:00', 5, 15, 'DF/0015088', 3); -- psicologa
+VALUES ('2018-03-07 13:00:00', '2018-03-07 15:00:00', 1, 15, 'DF/5799', 3); -- psiquiatra
 
+
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
+VALUES ('2018-03-07 7:00:00', 8, 'Preparação do paciente para o início do homecare, acompanhamento constante inclusive nos banhos. 
+Embora a paciente esteja em condições aut, sob recomendações ela não poderá ficar sozinha em momento algum.');
+
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
+VALUES ('2018-03-07 12:00:00', 8, 'Paciente apresenta inquietação ao ser alimentada. Início da preparação para a consulta do psiquiatra.');
+
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
+VALUES ('2018-03-07 15:57:00', 9, 'Durante consulta, paciente se mostrou bastante inquieta e sem mudanças no estado clínico da depressão. Foram receitados medicamentos, conforme prescrições indicam.');
+INSERT INTO PRESCRICAO(periodoDeUso, posologia, observacao, idVisita, idMedicamento) 
+VALUES ('A cada 12h', '1 comprimido de 5mg', 'Não ministrar outros medicamentos no intervalo de 2h, antes e depois.', 9, 6); 
+INSERT INTO PRESCRICAO(periodoDeUso, posologia, observacao, idVisita, idMedicamento) 
+VALUES ('A cada 24h', '0.5ml intravenoso', 'Ministrar em jejum minimo de 6h.', 9, 7); 
+
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
+VALUES ('2018-03-07 15:57:00', 9, 'Durante consulta, paciente se mostrou bastante inquieta e sem mudanças no estado clínico da depressão. Foram receitados medicamentos, conforme prescrições indicam.');
 
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-08 7:00:00', '2018-03-09 7:00:00', 3, 15, 'DF/63271', 5); 
+VALUES ('2018-03-08 7:00:00', '2018-03-09 7:00:00', 3, 15, 'DF/63271', 5);
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-08 13:00:00', '2018-03-08 15:00:00', 5, 15, 'DF/0015088', 3); -- psicologa
 
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 VALUES ('2018-03-09 7:00:00', '2018-03-10 7:00:00', 3, 15, 'DF/179653', 5); 
@@ -347,13 +367,7 @@ INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, regis
 VALUES ('2018-03-22 7:00:00', '2018-03-23 7:00:00', 3, 15, 'DF/179653', 5); 
 
 
--- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
--- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
--- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
--- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
--- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
--- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
--- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
--- VALUES ('2018-03-01 7:00:00', '2018-03-01 19:00:00', 3, 12, 'DF/124623', 5);
 
--- FALTA CRIAR VISITAS, PRESCRIÇÕES, EVOLUÇAO E AVALIAÇÕES -- 
+-- FALTA CRIAR E AVALIAÇÕES -- 
+
+
