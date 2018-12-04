@@ -16,7 +16,6 @@
 -- ---------------------------------------------------------------- --
 
 USE homecare; 
-
 use homecare; 
 
 
@@ -92,16 +91,19 @@ WHERE v.dataHoraInicio BETWEEN CURDATE() AND  CURDATE()+1;
 AND pro.idCargo = 5;	
 
 -- Consulta tecnicos fora de plantao
-SELECT p.nome FROM PROFISSIONAL pr 
+SELECT p.nome, tel.telefone, pro.registroProfissional, pro.idCargo FROM PROFISSIONAL pro 
 INNER JOIN PESSOA p
-ON pr.idPessoa = p.idPessoa
-WHERE pr.registroProfissional NOT IN 
+ON pro.idPessoa = p.idPessoa
+INNER JOIN  TELEFONEPESSOA tel
+ON p.idPessoa = tel.idPessoa
+WHERE pro.registroProfissional NOT IN 
 	(
 	SELECT pro.registroProfissional
 	FROM PROFISSIONAL pro
 	INNER JOIN VISITA v 
 	ON pro.registroProfissional = v.registroProfissional
-	WHERE v.dataHoraInicio = '2018-03-8 7:00:00' 
+	WHERE v.dataHoraInicio BETWEEN '2018-03-8 7:00:00' AND '2018-03-9 6:59:59' 
 	AND pro.idCargo = 5
-	) 
+	)
 AND idCargo = 5;
+

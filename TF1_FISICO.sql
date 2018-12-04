@@ -1,6 +1,7 @@
--- ---------------------------- TF1 aval -------------------------- --
+
+-- ---------------------------- TF1 aval --------------------------- --
 --                                                                  --
---                   SCRIPT DE CRIACAO (DDL)                        --
+--                  SCRIPT DE CRIACAO (DDL)                     --
 --                                                                  --
 -- Data Criacao ..........: 29/11/2018                              --
 -- Autor(es) .............: Lucas Machado de Moura e Silva          --
@@ -11,9 +12,9 @@
 -- Data Ultima Alteracao ..:                                        --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---         => 22 Tabelas                                            --
+--      => 22 Tabelas                                           --
 --                                                                  --
--- ---------------------------------------------------------------- --
+-- ----------------------------------------------------------------- --
 
 -- CREATE DATABASE IF NOT EXISTS homecare
 -- DEFAULT CHARACTER SET utf8
@@ -163,12 +164,11 @@ CREATE TABLE IF NOT EXISTS PRESCRICAO (
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 CREATE TABLE IF NOT EXISTS EVOLUCAO (
-    idEvolucao INT AUTO_INCREMENT NOT NULL,
 	dataHoraRegistro DATETIME NOT NULL,
     observacao VARCHAR(500) NOT NULL,
     idVisita INT NOT NULL,
     idPrescricao INT,
-    CONSTRAINT EVOLUCAO_PK PRIMARY KEY(idEvolucao), 
+    CONSTRAINT EVOLUCAO_PK PRIMARY KEY(dataHoraRegistro, idVisita), 
     CONSTRAINT EVOLUCAO_VISITA_FK FOREIGN KEY (idVisita) REFERENCES VISITA (idVisita) ON DELETE RESTRICT,
     CONSTRAINT EVOLUCAO_PRESCRICAO_FK FOREIGN KEY (idPrescricao) REFERENCES PRESCRICAO (idPrescricao) ON DELETE SET NULL
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
@@ -200,6 +200,7 @@ CREATE TABLE IF NOT EXISTS AVALIACAO (
     idCategoriaProfissional INT NOT NULL,
     idPaciente INT,
     dataAvaliacao DATE,
+    avaliacao TEXT,
 	CONSTRAINT AVALIACAO_PACIENTE_FK FOREIGN KEY (idPaciente) REFERENCES PACIENTE (idPaciente) ON DELETE SET NULL,
     CONSTRAINT AVALIACAO_REGISTROPROFISSIONAL_TECNICO_FK FOREIGN KEY (registroProfissional) REFERENCES TECNICO (registroProfissional) ON DELETE RESTRICT,
 	CONSTRAINT AVALIACAO_CATEGORIAPROFISSIONAL_TECNICO_FK FOREIGN KEY (idCategoriaProfissional) REFERENCES TECNICO (idCategoriaProfissional) ON DELETE CASCADE
@@ -238,4 +239,5 @@ CREATE TABLE IF NOT EXISTS TECNICO_EQUIPAMENTO (
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 -- drop database homecare;
+
 

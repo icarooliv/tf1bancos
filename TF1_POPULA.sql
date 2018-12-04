@@ -142,7 +142,7 @@ INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, regis
 VALUES(5, 5, 9, '83486630768', 'DF/23231', '125509-6', 1, 'Banco do Brasil', '3591' ); -- COFFITO - fisioterapeuta
 
 INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, registroProfissional, numeroConta, codBanco, nomeBanco, numeroAgencia)
-VALUES(6, 1, 5, '62357653386', 'DF/125723', '1080418-8', 1, 'Banco do Brasil', '2945' ); -- COFEN - enfermeira
+VALUES(6, 1, 4, '62357653386', 'DF/125723', '1080418-8', 1, 'Banco do Brasil', '2945' ); -- COFEN - enfermeira
 
 INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, registroProfissional, numeroConta, codBanco, nomeBanco, numeroAgencia)
 VALUES(7, 1, 5, '64972739781', 'DF/125223', '1288950-4', 1, 'Banco do Brasil', '3598'); -- COFEN - tecnica
@@ -382,8 +382,9 @@ VALUES ('2018-03-09 16:30:00', 12, 3, 'Termino da terceira dialise.');
 
 
 -- INSERÇAO DE AVALIACAO -- 
-INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao)
-VALUES ('DF/9431', 5, 15, '2018-03-08'),('DF/63271', 5, 15, '2018-03-09'),('DF/179653', 5, 15, '2018-03-10'),('DF/125223', 5, 15, '2018-03-11'),('DF/9431', 5, 15, '2018-03-12'),('DF/63271', 5, 15, '2018-03-13'),('DF/179653', 5, 15, '2018-03-14');
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
+VALUES ('DF/9431', 5, 15, '2018-03-08','Profissional atencioso e cuidadoso. É paciente e organizado.' ),
+('DF/179653', 5, 15, '2018-03-14', 'Profissional chegou atrasado.');
 
-INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao)
-VALUES ('DF/124623', 5, 13, '2018-03-07'),('DF/179653', 5, 13, '2018-03-08'),('DF/124623', 5, 13, '2018-03-09'); 
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
+VALUES ('DF/124623', 5, 13, '2018-03-07', 'Profissional é bem humorado e atencioso.');
