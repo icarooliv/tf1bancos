@@ -17,6 +17,9 @@
 
 USE homecare; 
 
+use homecare; 
+
+
 -- Consulta Histórico do Paciente
 SELECT pes.nome, pes.dataNascimento, p.altura, p.diagnostico, p.peso, 
 	    e.dataHoraRegistro, e.observacao, e.idVisita, tpv.nome, 
@@ -30,7 +33,8 @@ AND p.idPaciente = 15 -- mudar id do Paciente para outros pacientes
 INNER JOIN PESSOA pes
 ON p.idPaciente = pes.idPessoa
 INNER JOIN TIPOVISITA tpv
-ON tpv.idTipoVisita = v.idTipoVisita;
+ON tpv.idTipoVisita = v.idTipoVisita
+ORDER BY e.dataHoraRegistro ASC;
 
 -- Consulta prescriçoes, com o nome do paciente, medico e medicamentos
 SELECT pes.nome as nomePaciente, pes.dataNascimento as dataNascimentoPaciente, 
@@ -65,5 +69,39 @@ INNER JOIN CATEGORIAPROFISSIONAL cat
 ON p.idCategoriaProfissional = cat.idCategoriaProfissional
 INNER JOIN CARGO car
 ON p.idCargo = car.idCargo;
-	
-	
+
+-- Consulta todos os tecnicos cadastrados
+SELECT pes.nome, tec.registroProfissional, tel.telefone, pes.rg, pes.cidade, pes.rua, pes.bairro, pes.sexo, tec.nadaConsta, tec.cnh from TECNICO tec
+INNER JOIN PROFISSIONAL pro
+ON tec.registroProfissional = pro.registroProfissional
+INNER JOIN PESSOA pes
+ON pro.idPessoa = pes.idPessoa
+INNER JOIN ESTADOCIVIL ec
+ON pes.idEstadoCivil = ec.idEstadoCivil
+INNER JOIN TELEFONEPESSOA tel
+ON pes.idPessoa = tel.idPessoa;
+
+-- Consulta tecnicos de saude que não estão em consulta por data
+SELECT pro.registroProfissional, pes.nome 
+FROM VISITA v, PROFISSIONAL pro
+INNER JOIN TECNICO tec
+	ON pro.registroProfissional = tec.registroProfissional
+INNER JOIN PESSOA pes 
+	ON pro.idPessoa = pes.idPessoa
+WHERE v.dataHoraInicio BETWEEN CURDATE() AND  CURDATE()+1;
+AND pro.idCargo = 5;	
+
+-- Consulta tecnicos fora de plantao
+SELECT p.nome FROM PROFISSIONAL pr 
+INNER JOIN PESSOA p
+ON pr.idPessoa = p.idPessoa
+WHERE pr.registroProfissional NOT IN 
+	(
+	SELECT pro.registroProfissional
+	FROM PROFISSIONAL pro
+	INNER JOIN VISITA v 
+	ON pro.registroProfissional = v.registroProfissional
+	WHERE v.dataHoraInicio = '2018-03-8 7:00:00' 
+	AND pro.idCargo = 5
+	) 
+AND idCargo = 5;
