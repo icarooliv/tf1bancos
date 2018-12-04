@@ -1,6 +1,21 @@
--- popula
+-- ---------------------------- TF1 aval -------------------------- --
+--                                                                  --
+--                   SCRIPT DE POPULA (DML)                         --
+--                                                                  --
+-- Data Criacao ..........: 03/11/2018                              --
+-- Autor(es) .............: Lucas Machado de Moura e Silva          --
+--                          Ícaro Oliveira                          --
+-- Banco de Dados ........: MySQL                                   --
+-- Base de Dados(nome) ...: homecare                                --
+--                                                                  --
+-- Data Ultima Alteracao ..:                                        --
+--                                                                  --
+-- PROJETO => 1  Base de Dados                                      --
+--         => 22 Tabelas                                            --
+--                                                                  --
+-- ---------------------------------------------------------------- --
 
-use homecare;
+USE homecare;
 
 -- INSERÇÃO DE ESTADOS CIVIS --
 INSERT INTO ESTADOCIVIL(nome) VALUES ('CASADO');
@@ -177,8 +192,8 @@ INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (12, 'J302');
 
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (13, 'I120');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (13, 'A985');
-INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (14, 'Z886');
 
+INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (14, 'Z886');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (14, 'I694');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (14, 'F331');
 
@@ -243,13 +258,15 @@ INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, i
 VALUES ('DF/179653', 5, 3);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
 VALUES ('DF/179653', 5, 2);
+INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
+VALUES ('DF/179653', 5, 1);
 
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
 VALUES ('DF/124623', 5, 4);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
 VALUES ('DF/124623', 5, 3);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/124623', 5, 2);
+VALUES ('DF/124623', 5, 1);
 
 -- INSERÇÃO DE MEDICAMENTOS --
 INSERT INTO MEDICAMENTO(nome) VALUES ('ACICLOVIR');
@@ -329,3 +346,44 @@ VALUES ('2018-03-12 7:00:00', '2018-03-13 7:00:00', 3, 15, 'DF/63271', 5);
 -- Inicio do setimo
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
 VALUES ('2018-03-13 7:00:00', '2018-03-14 7:00:00', 3, 15, 'DF/179653', 5); 
+
+-- INSERÇAO DE VISITAS, EVOLUCOES E PRESCRICOES -- 
+-- Paciente id 13 -- visitas de 12h plantao 12/36 para as tecnicas com visita periodica da psicologa, utilizando 2 tecnicos,  DF/124623 DF/179653
+
+-- Inicio do primeiro plantao
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) -- id 10
+VALUES ('2018-03-07 7:00:00', '2018-03-07 19:00:00', 3, 13, 'DF/124623', 5); 
+INSERT INTO PRESCRICAO(periodoDeUso, posologia, idVisita, idMedicamento) 
+VALUES ('durante 7 dias', '500ml via membrana peritoneal', 10, 7); 
+-- Evolucao do primeiro plantao
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-07 7:30:00', 10, 3, 'Inicio da primeira dialise.');
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-07 16:30:00', 10, 3, 'Termino da primeira dialise.');
+
+-- Inicio do segundo plantao
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-08 7:00:00', '2018-03-08 19:00:00', 3, 13, 'DF/179653', 5); 
+-- Evolucao do segundo plantao
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-08 7:30:00', 11, 3, 'Inicio da segunda dialise, paciente queixou-se de dores abdominais apos a ultima dialise.');
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-08 16:30:00', 11, 3, 'Termino da segunda dialise.');
+
+-- Inicio do terceiro plantao
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-09 7:00:00', '2018-03-09 19:00:00', 3, 13, 'DF/124623', 5); 
+-- Evolucao do terceiro plantao
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-09 7:30:00', 12, 3, 'Inicio da terceira dialise, paciente nao apresentou queixa de dores abdominais.');
+INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
+VALUES ('2018-03-09 16:30:00', 12, 3, 'Termino da terceira dialise.');
+
+
+
+-- INSERÇAO DE AVALIACAO -- 
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao)
+VALUES ('DF/9431', 5, 15, '2018-03-08'),('DF/63271', 5, 15, '2018-03-09'),('DF/179653', 5, 15, '2018-03-10'),('DF/125223', 5, 15, '2018-03-11'),('DF/9431', 5, 15, '2018-03-12'),('DF/63271', 5, 15, '2018-03-13'),('DF/179653', 5, 15, '2018-03-14');
+
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao)
+VALUES ('DF/124623', 5, 13, '2018-03-07'),('DF/179653', 5, 13, '2018-03-08'),('DF/124623', 5, 13, '2018-03-09'); 
