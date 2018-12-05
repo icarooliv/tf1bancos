@@ -11,7 +11,7 @@
 -- Data Ultima Alteracao ..:    04/12/2018                                    --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---         => 22 Tabelas                                            --
+--         => 23 Tabelas                                            --
 --                                                                  --
 -- ---------------------------------------------------------------- --
 
@@ -223,6 +223,7 @@ INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (16, 'J431');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (16, 'Z889');
 
 -- INSERÇÃO DE TECNICOS --
+-- nadaConsta 0 = true ou seja o paciente nao tem antecedentes, nadaConsta 1 = tem antecedentes
 INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/125223', 1, 0, '54408895714');
 INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/179653', 1, 0, '22124731796');
 INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/9431', 1, 0, '52643671460');

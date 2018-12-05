@@ -1,5 +1,5 @@
 
--- ---------------------------- TF1 aval --------------------------- --
+-- ---------------------------- TF1 homecare --------------------------- --
 --                                                                  --
 --                  SCRIPT DE CRIACAO (DDL)                     --
 --                                                                  --
@@ -12,7 +12,7 @@
 -- Data Ultima Alteracao ..: 04/12/2018                                       --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---      => 26 Tabelas                                           --
+--      => 23 Tabelas                                           --
 --                                                                  --
 -- ----------------------------------------------------------------- --
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS PACIENTE (
     idPaciente INT NOT NULL,
     peso DECIMAL(7,2) NOT NULL,
     altura INT NOT NULL,
-    tipoSanguineo CHAR(2) NOT NULL,
+    tipoSanguineo CHAR(3) NOT NULL,
     diagnostico TEXT,
     idComplexidade INT NOT NULL,
     CONSTRAINT PACIENTE_PK PRIMARY KEY (idPaciente),
@@ -233,4 +233,3 @@ CREATE TABLE IF NOT EXISTS TECNICO_EQUIPAMENTO (
 	CONSTRAINT TECNICO_EQUIPAMENTO_CATEGORIAPROFISSIONAL_TECNICO_FK FOREIGN KEY (idCategoriaProfissional) REFERENCES TECNICO (idCategoriaProfissional) ON DELETE CASCADE,
 	CONSTRAINT TECNICO_EQUIPAMENTO_EQUIPAMENTO_FK FOREIGN KEY (idEquipamento) REFERENCES EQUIPAMENTO (idEquipamento) ON DELETE SET NULL
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
-

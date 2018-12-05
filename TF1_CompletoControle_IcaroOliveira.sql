@@ -17,7 +17,7 @@
 
 USE homecare;
 
-CREATE USER admin1@localhost IDENTIFIED BY 'admin123';
+CREATE USER 'admin1'@'localhost' IDENTIFIED BY 'admin123';
 
 GRANT ALL PRIVILEGES ON
 	homecare.* 
