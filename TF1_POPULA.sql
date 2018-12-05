@@ -8,12 +8,13 @@
 -- Banco de Dados ........: MySQL                                   --
 -- Base de Dados(nome) ...: homecare                                --
 --                                                                  --
--- Data Ultima Alteracao ..:                                        --
+-- Data Ultima Alteracao ..:    04/12/2018                                    --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
 --         => 22 Tabelas                                            --
 --                                                                  --
 -- ---------------------------------------------------------------- --
+
 
 USE homecare;
 
@@ -22,6 +23,7 @@ INSERT INTO ESTADOCIVIL(nome) VALUES ('CASADO');
 INSERT INTO ESTADOCIVIL(nome) VALUES ('SOLTEIRO');
 INSERT INTO ESTADOCIVIL(nome) VALUES ('DIVORCIADO');
 INSERT INTO ESTADOCIVIL(nome) VALUES ('VIUVO');
+INSERT INTO ESTADOCIVIL(nome) VALUES ('SEPARADO');
 
 -- INSERÇÃO DE CARGOS --
 INSERT INTO CARGO(nome) VALUES ('CARDIOLOGISTA');
@@ -32,7 +34,7 @@ INSERT INTO CARGO(nome) VALUES ('TECNICO EM ENFERMAGEM');
 INSERT INTO CARGO(nome) VALUES ('ONCOLOGISTA');
 INSERT INTO CARGO(nome) VALUES ('PSIQUIATRA');
 INSERT INTO CARGO(nome) VALUES ('NEUROLOGISTA');
-INSERT INTO CARGO(nome) VALUES ('FISIOTERAPEUTA');
+INSERT INTO CARGO(nome) VALUES ('NEFROLOGISTA');
 
 -- INSERÇÃO DE COMPLEXIDADES --
 INSERT INTO COMPLEXIDADE(valorBase, nivel, descricao) VALUES (1000.0, 'B', 'Baixa Complexidade');
@@ -56,11 +58,19 @@ VALUES ('95133685000150', 'Quadra 16 Área Especial 04', '758', 'Brasília', 'So
 INSERT INTO COOPERATIVA(cnpj, rua, numero, cidade, bairro, cep, nome) 
 VALUES ('60604513000133', 'Quadra QR 308 Conjunto H', '400', 'Brasília', 'Santa Maria', '72335108', 'COOPERATIVA DE TECNICAS DE ENFERMAGEM DE SANTA MARIA');
 
+INSERT INTO COOPERATIVA(cnpj, rua, numero, cidade, bairro, cep, nome) 
+VALUES ('78558779000152', 'Quadra Quadra 7 Conjunto H', '979', 'Brasília', 'Paranoá', '71570708', 'COOPERATIVA DE TECNICAS DE ENFERMAGEM DO PARANOÁ');
+
+INSERT INTO COOPERATIVA(cnpj, rua, numero, cidade, bairro, cep, nome) 
+VALUES ('18827172000107', 'Quadra SRES Quadra 10 Bloco G', '771', 'Brasília', 'Cruzeiro Velho', '70645070', 'COOPERATIVA DE TECNICAS DE ENFERMAGEM DO PARANOÁ');
+
 -- INSEÇAO DE TELEFONES DAS COOPERATIVAS --
 
 INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6129939898', '67847872000160');
 INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6135496613', '95133685000150');
 INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6137525509', '60604513000133');
+INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6137525509', '78558779000152');
+INSERT INTO TELEFONECOOPERATIVA(telefone, cnpj) VALUES('6137525509', '18827172000107');
 
 -- INSERÇÃO DE PESSOAS --
 INSERT INTO PESSOA(tituloEleitor, dataNascimento, rg, cpf, nome, cep, cidade, rua, numero, bairro, sexo, idEstadoCivil) 
@@ -108,6 +118,9 @@ VALUES('436364032046DF', '1948-03-25', '417942138', '06958518101', 'Caleb Emanue
 INSERT INTO PESSOA(tituloEleitor, dataNascimento, rg, cpf, nome, cep, cidade, rua, numero, bairro, sexo, idEstadoCivil) 
 VALUES ('880451162054DF', '1996-03-10', '321706602', '81601705131', 'Luzia Aurora Castro', '72600120', 'Brasília', 'Quadra Quadra 101 Conjunto 16', '153', 'Recanto das Emas', 'F', 1);
 
+INSERT INTO PESSOA(tituloEleitor, dataNascimento, rg, cpf, nome, cep, cidade, rua, numero, bairro, sexo, idEstadoCivil) 
+VALUES ('011051230108DF', '1965-03-10', '378154813', '12666191435', 'Kelly Aurora Castro', '72600120', 'Brasília', 'Quadra Quadra 101 Conjunto 16', '153', 'Recanto das Emas', 'F', 1);
+
 -- INSERÇÃO DE TELEFONES DAS PESSOAS -- 
 INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('61991449791', 1);
 INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6128885392', 2);
@@ -124,6 +137,7 @@ INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6129935541', 12);
 INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6129935541', 13);
 INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6129882392', 14);
 INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6139795602', 15);
+INSERT INTO TELEFONEPESSOA(telefone, idPessoa) VALUES ('6139795602', 16);
 
 -- INSERÇÃO DE PROFISSIONAIS --
 INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, registroProfissional, numeroConta, codBanco, nomeBanco, numeroAgencia)
@@ -139,7 +153,7 @@ INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, regis
 VALUES(4, 4, 2, '82325125915', 'DF/12388', '13712-X', 1, 'Banco do Brasil', '2911'); -- CFFA - fonoaudiologo
 
 INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, registroProfissional, numeroConta, codBanco, nomeBanco, numeroAgencia)
-VALUES(5, 5, 9, '83486630768', 'DF/23231', '125509-6', 1, 'Banco do Brasil', '3591' ); -- COFFITO - fisioterapeuta
+VALUES(5, 2, 9, '83486630768', 'DF/23231', '125509-6', 1, 'Banco do Brasil', '3591' ); -- CFM - nefrologista
 
 INSERT INTO PROFISSIONAL(idPessoa, idCategoriaProfissional, idCargo, ctps, registroProfissional, numeroConta, codBanco, nomeBanco, numeroAgencia)
 VALUES(6, 1, 4, '62357653386', 'DF/125723', '1080418-8', 1, 'Banco do Brasil', '2945' ); -- COFEN - enfermeira
@@ -170,7 +184,12 @@ INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idCom
 VALUES (14, 54.00, 165, 'O-', 'Paciente após dois AVC seguidos, o paciente apresenta sequelas de paralisia no lado esquerdo do corpo, dificulade de engolir e quadro depressivo.', 2);
 
 INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idComplexidade) 
-VALUES (15, 73.00, 175, 'AB', 'Diagnóstico de transtorno obsessivo-compulsivo com predominância de comportamentos compulsivos. Paciente apresenta também sintomas de TAG (Transtorno de ansiedade generalizada) devido aos rituais de repetição e pensamentos intrusivos que o TOC produz juntamente com um quadro de depressão grave', 3);
+VALUES (15, 73.00, 175, 'AB', 'Diagnóstico de transtorno obsessivo-compulsivo com predominância de comportamentos compulsivos. 
+Paciente apresenta também sintomas de TAG (Transtorno de ansiedade generalizada) devido aos rituais de repetição e pensamentos intrusivos que o TOC produz 
+juntamente com um quadro de depressão grave', 3);
+
+INSERT INTO PACIENTE(idPaciente, peso, altura, tipoSanguineo, diagnostico, idComplexidade) 
+VALUES (16, 81.00, 160, 'AB+', 'Graves problemas respiratórios, pulmão esquerdo comprometido.', 3);
 
 -- INSERÇÃO DE PATOLOGIAS --
 INSERT INTO PATOLOGIA(cid, nome) VALUES ('I120', 'Doença renal hipertensiva com insuficiência renal');
@@ -200,29 +219,32 @@ INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (14, 'F331');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (15, 'F421');
 INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (15, 'F331');
 
+INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (16, 'J431');
+INSERT INTO PACIENTE_PATOLOGIA(idPaciente, cid) VALUES (16, 'Z889');
+
 -- INSERÇÃO DE TECNICOS --
-INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/125223', 5, 0, '54408895714');
-INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/179653', 5, 0, '22124731796');
-INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/9431', 5, 0, '52643671460');
-INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/124623', 5, 0, NULL);
-INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/63271', 5, 1, NULL);
+INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/125223', 1, 0, '54408895714');
+INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/179653', 1, 0, '22124731796');
+INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/9431', 1, 0, '52643671460');
+INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/124623', 1, 0, NULL);
+INSERT INTO TECNICO(registroProfissional, idCategoriaProfissional, nadaConsta, cnh) VALUES ('DF/63271', 1, 1, NULL);
 
 -- INSERÇÃO DE TECNICOS PARA COOPERATIVAS --
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 5, '67847872000160');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 5, '95133685000150');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 5, '60604513000133');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 1, '67847872000160');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 1, '95133685000150');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/125223', 1, '60604513000133');
 
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/179653', 5, '95133685000150');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/179653', 5, '60604513000133');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/179653', 1, '95133685000150');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/179653', 1, '60604513000133');
 
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 5, '67847872000160');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 5, '95133685000150');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 5, '60604513000133');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 1, '67847872000160');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 1, '95133685000150');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 1, '60604513000133');
 
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/124623', 5, '67847872000160');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/124623', 1, '67847872000160');
 
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 5, '67847872000160');
-INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 5, '95133685000150');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 1, '67847872000160');
+INSERT INTO TECNICO_COOPERATIVA(registroProfissional, idCategoriaProfissional, cnpj) VALUES ('DF/63271', 1, '95133685000150');
 
 
 -- INSERÇÃO DE EQUIPAMENTOS --
@@ -246,27 +268,27 @@ INSERT INTO PACIENTE_EQUIPAMENTO(idPaciente, idEquipamento) VALUES (14, 3);
 
 -- INSERÇAO DE EQUIPAMENTOS PARA TECNICOS -- 
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/125223', 5, 1);
+VALUES ('DF/125223', 1, 1);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/125223', 5, 2);
+VALUES ('DF/125223', 1, 2);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/125223', 5, 3);
+VALUES ('DF/125223', 1, 3);
 
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/179653', 5, 4);
+VALUES ('DF/179653', 1, 4);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/179653', 5, 3);
+VALUES ('DF/179653', 1, 3);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/179653', 5, 2);
+VALUES ('DF/179653', 1, 2);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/179653', 5, 1);
+VALUES ('DF/179653', 1, 1);
 
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/124623', 5, 4);
+VALUES ('DF/124623', 1, 4);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/124623', 5, 3);
+VALUES ('DF/124623', 1, 3);
 INSERT INTO TECNICO_EQUIPAMENTO(registroProfissional, idCategoriaProfissional, idEquipamento) 
-VALUES ('DF/124623', 5, 1);
+VALUES ('DF/124623', 1, 1);
 
 -- INSERÇÃO DE MEDICAMENTOS --
 INSERT INTO MEDICAMENTO(nome) VALUES ('ACICLOVIR');
@@ -290,11 +312,11 @@ INSERT INTO TIPOVISITA(nome) VALUES ('SESSÃO DE PSICOTERAPIA');
 
 -- Inicio do primeiro plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-07 7:00:00', '2018-03-08 7:00:00', 3, 15, 'DF/9431', 5); 
+VALUES ('2018-03-07 7:00:00', '2018-03-08 7:00:00', 3, 15, 'DF/9431', 1); 
 
 -- marcada consulta com o psiquiatra durante o primeiro plantao (idVisita = 9)
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-07 13:00:00', '2018-03-07 15:00:00', 1, 15, 'DF/5799', 3); 
+VALUES ('2018-03-07 13:00:00', '2018-03-07 15:00:00', 1, 15, 'DF/5799', 2); 
 
 -- evolucoes antes da consulta
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
@@ -305,7 +327,8 @@ VALUES ('2018-03-07 12:00:00', 1, 'Paciente apresenta inquietação ao ser alime
 
 -- Evolução da consulta marcada com o psiquiatra
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, observacao) 
-VALUES ('2018-03-07 15:57:00', 2, 'Durante consulta, paciente se mostrou bastante inquieta e sem mudanças no estado clínico da depressão. Foram receitados medicamentos, conforme prescrições indicam.');
+VALUES ('2018-03-07 15:57:00', 2, 'Durante consulta, paciente se mostrou bastante inquieta e sem mudanças no estado clínico da depressão. 
+Foram receitados medicamentos, conforme prescrições indicam.');
 
 -- medicamentos prescritos na consulta (idVisita = 2)
 INSERT INTO PRESCRICAO(periodoDeUso, posologia, observacao, idVisita, idMedicamento) 
@@ -321,7 +344,7 @@ VALUES ('2018-03-08 00:00:00', 1, 2, 'Aplicacao intravenosa, paciente apresentou
 
 -- Inicio do segundo plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-08 7:00:00', '2018-03-09 7:00:00', 3, 15, 'DF/63271', 5);
+VALUES ('2018-03-08 7:00:00', '2018-03-09 7:00:00', 3, 15, 'DF/63271', 1);
 
 -- Inicio da visita do tipo SESSAO PSICOTERAPIA
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
@@ -329,30 +352,30 @@ VALUES ('2018-03-08 13:00:00', '2018-03-08 15:00:00', 5, 15, 'DF/0015088', 3); -
 
 -- Inicio do terceiro plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-09 7:00:00', '2018-03-10 7:00:00', 3, 15, 'DF/179653', 5); 
+VALUES ('2018-03-09 7:00:00', '2018-03-10 7:00:00', 3, 15, 'DF/179653', 1); 
 
 -- Inicio do quarto plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-10 7:00:00', '2018-03-11 7:00:00', 3, 15, 'DF/125223', 5);  
+VALUES ('2018-03-10 7:00:00', '2018-03-11 7:00:00', 3, 15, 'DF/125223', 1);  
 
 -- Inicio do quinto plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-11 7:00:00', '2018-03-12 7:00:00', 3, 15, 'DF/9431', 5); 
+VALUES ('2018-03-11 7:00:00', '2018-03-12 7:00:00', 3, 15, 'DF/9431', 1); 
 
 -- Inicio do sexto plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-12 7:00:00', '2018-03-13 7:00:00', 3, 15, 'DF/63271', 5); 
+VALUES ('2018-03-12 7:00:00', '2018-03-13 7:00:00', 3, 15, 'DF/63271', 1); 
 
 -- Inicio do setimo
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-13 7:00:00', '2018-03-14 7:00:00', 3, 15, 'DF/179653', 5); 
+VALUES ('2018-03-13 7:00:00', '2018-03-14 7:00:00', 3, 15, 'DF/179653', 1); 
 
 -- INSERÇAO DE VISITAS, EVOLUCOES E PRESCRICOES -- 
 -- Paciente id 13 -- visitas de 12h plantao 12/36 para as tecnicas com visita periodica da psicologa, utilizando 2 tecnicos,  DF/124623 DF/179653
 
 -- Inicio do primeiro plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) -- id 10
-VALUES ('2018-03-07 7:00:00', '2018-03-07 19:00:00', 3, 13, 'DF/124623', 5); 
+VALUES ('2018-03-07 7:00:00', '2018-03-07 19:00:00', 3, 13, 'DF/124623', 1); 
 INSERT INTO PRESCRICAO(periodoDeUso, posologia, idVisita, idMedicamento) 
 VALUES ('durante 7 dias', '500ml via membrana peritoneal', 10, 7); 
 -- Evolucao do primeiro plantao
@@ -363,28 +386,41 @@ VALUES ('2018-03-07 16:30:00', 10, 3, 'Termino da primeira dialise.');
 
 -- Inicio do segundo plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-08 7:00:00', '2018-03-08 19:00:00', 3, 13, 'DF/179653', 5); 
+VALUES ('2018-03-08 7:00:00', '2018-03-08 19:00:00', 3, 13, 'DF/179653', 1); 
 -- Evolucao do segundo plantao
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
 VALUES ('2018-03-08 7:30:00', 11, 3, 'Inicio da segunda dialise, paciente queixou-se de dores abdominais apos a ultima dialise.');
+-- marcando visita nefrologista durante segundo plantao
+INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+VALUES ('2018-03-08 14:00:00', '2018-03-08 15:00:00', 1, 13, 'DF/23231', 2); 
+-- prescricoes geradas durante visita
+INSERT INTO PRESCRICAO (periodoDeUso, posologia, observacao, idVisita, idMedicamento) VALUES ('3 em 3 horas', '2 gotas', NULL, 12, 2);
+INSERT INTO PRESCRICAO (periodoDeUso, posologia, observacao, idVisita, idMedicamento) VALUES ('Toda vez durante a diálise', '200ml', NULL, 12, 3);
+-- continuacao evolucao segundo plantao
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
 VALUES ('2018-03-08 16:30:00', 11, 3, 'Termino da segunda dialise.');
 
 -- Inicio do terceiro plantao
 INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
-VALUES ('2018-03-09 7:00:00', '2018-03-09 19:00:00', 3, 13, 'DF/124623', 5); 
+VALUES ('2018-03-09 7:00:00', '2018-03-09 19:00:00', 3, 13, 'DF/124623', 1); 
 -- Evolucao do terceiro plantao
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
 VALUES ('2018-03-09 7:30:00', 12, 3, 'Inicio da terceira dialise, paciente nao apresentou queixa de dores abdominais.');
 INSERT INTO EVOLUCAO(dataHoraRegistro, idVisita, idPrescricao, observacao) 
 VALUES ('2018-03-09 16:30:00', 12, 3, 'Termino da terceira dialise.');
 
-
-
 -- INSERÇAO DE AVALIACAO -- 
 INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
-VALUES ('DF/9431', 5, 15, '2018-03-08','Profissional atencioso e cuidadoso. É paciente e organizado.' ),
-('DF/179653', 5, 15, '2018-03-14', 'Profissional chegou atrasado.');
+VALUES ('DF/9431', 1, 15, '2018-03-08','Profissional atencioso e cuidadoso. É paciente e organizado.' );
 
 INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
-VALUES ('DF/124623', 5, 13, '2018-03-07', 'Profissional é bem humorado e atencioso.');
+VALUES('DF/179653', 1, 15, '2018-03-14', 'Profissional chegou atrasado.');
+
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
+VALUES ('DF/124623', 1, 13, '2018-03-07', 'Profissional é bem humorado e atencioso.');
+
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
+VALUES ('DF/179653', 1, 13, '2018-03-08', 'Profissional é bem humorado e atencioso.');
+
+INSERT INTO AVALIACAO (registroProfissional, idCategoriaProfissional, idPaciente, dataAvaliacao, avaliacao)
+VALUES ('DF/124623', 1, 13, '2018-03-09', 'Profissional foi cuidadoso durante a dialise.');

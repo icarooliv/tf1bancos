@@ -9,16 +9,12 @@
 -- Banco de Dados ........: MySQL                                   --
 -- Base de Dados(nome) ...: homecare                                --
 --                                                                  --
--- Data Ultima Alteracao ..:                                        --
+-- Data Ultima Alteracao ..: 04/12/2018                                       --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---      => 22 Tabelas                                           --
+--      => 26 Tabelas                                           --
 --                                                                  --
 -- ----------------------------------------------------------------- --
-
--- CREATE DATABASE IF NOT EXISTS homecare
--- DEFAULT CHARACTER SET utf8
--- DEFAULT COLLATE utf8_general_ci;
 
 CREATE DATABASE IF NOT EXISTS homecare;
 USE homecare; 
@@ -26,7 +22,7 @@ USE homecare;
 CREATE TABLE IF NOT EXISTS COMPLEXIDADE (
 	idComplexidade INT AUTO_INCREMENT NOT NULL,
     valorBase DECIMAL(7,2) NOT NULL,
-    nivel CHAR NOT NULL,
+    nivel CHAR(1) NOT NULL UNIQUE,
     descricao VARCHAR(100) NOT NULL,
     CONSTRAINT COMPLEXIDADE_PK PRIMARY KEY(idComplexidade)
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
@@ -45,7 +41,7 @@ CREATE TABLE IF NOT EXISTS PATOLOGIA (
 
 CREATE TABLE IF NOT EXISTS PESSOA (
     idPessoa INT AUTO_INCREMENT NOT NULL,
-    tituloEleitor VARCHAR(30) UNIQUE NOT NULL,
+    tituloEleitor VARCHAR(30) UNIQUE,
     dataNascimento DATE NOT NULL,
     rg VARCHAR(9) UNIQUE,
     cpf VARCHAR(11) UNIQUE,
@@ -164,7 +160,7 @@ CREATE TABLE IF NOT EXISTS PRESCRICAO (
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 CREATE TABLE IF NOT EXISTS EVOLUCAO (
-	dataHoraRegistro DATETIME NOT NULL,
+	dataHoraRegistro TIMESTAMP NOT NULL,
     observacao VARCHAR(500) NOT NULL,
     idVisita INT NOT NULL,
     idPrescricao INT,
@@ -199,7 +195,7 @@ CREATE TABLE IF NOT EXISTS AVALIACAO (
     registroProfissional VARCHAR(50),
     idCategoriaProfissional INT NOT NULL,
     idPaciente INT,
-    dataAvaliacao DATE,
+    dataAvaliacao TIMESTAMP,
     avaliacao TEXT,
 	CONSTRAINT AVALIACAO_PACIENTE_FK FOREIGN KEY (idPaciente) REFERENCES PACIENTE (idPaciente) ON DELETE SET NULL,
     CONSTRAINT AVALIACAO_REGISTROPROFISSIONAL_TECNICO_FK FOREIGN KEY (registroProfissional) REFERENCES TECNICO (registroProfissional) ON DELETE RESTRICT,
@@ -237,7 +233,4 @@ CREATE TABLE IF NOT EXISTS TECNICO_EQUIPAMENTO (
 	CONSTRAINT TECNICO_EQUIPAMENTO_CATEGORIAPROFISSIONAL_TECNICO_FK FOREIGN KEY (idCategoriaProfissional) REFERENCES TECNICO (idCategoriaProfissional) ON DELETE CASCADE,
 	CONSTRAINT TECNICO_EQUIPAMENTO_EQUIPAMENTO_FK FOREIGN KEY (idEquipamento) REFERENCES EQUIPAMENTO (idEquipamento) ON DELETE SET NULL
 )ENGINE = InnoDB DEFAULT CHARSET = UTF8;
-
--- drop database homecare;
-
 

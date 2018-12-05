@@ -1,23 +1,23 @@
--- ---------------------------- TF1 aval -------------------------- --
+
+-- ---------------------------- TF1 aval --------------------------- --
 --                                                                  --
---                    SCRIPT DE CONSULTA (DML)                      --
+--                  SCRIPT DE CONSULTAS (DDL)                     --
 --                                                                  --
--- Data Criacao ..........: 03/11/2018                              --
+-- Data Criacao ..........: 29/11/2018                              --
 -- Autor(es) .............: Lucas Machado de Moura e Silva          --
 --                          Ícaro Oliveira                          --
 -- Banco de Dados ........: MySQL                                   --
 -- Base de Dados(nome) ...: homecare                                --
 --                                                                  --
--- Data Ultima Alteracao ..:                                        --
+-- Data Ultima Alteracao ..: 04/12/2018                                       --
 --                                                                  --
 -- PROJETO => 1  Base de Dados                                      --
---         => 22 Tabelas                                            --
+--      => 26 Tabelas     
+-- CONSULTAS => 6 consultas                                      --
 --                                                                  --
--- ---------------------------------------------------------------- --
+-- ----------------------------------------------------------------- --
 
-USE homecare; 
 use homecare; 
-
 
 -- Consulta Histórico do Paciente
 SELECT pes.nome, pes.dataNascimento, p.altura, p.diagnostico, p.peso, 
@@ -78,20 +78,11 @@ ON pro.idPessoa = pes.idPessoa
 INNER JOIN ESTADOCIVIL ec
 ON pes.idEstadoCivil = ec.idEstadoCivil
 INNER JOIN TELEFONEPESSOA tel
-ON pes.idPessoa = tel.idPessoa;
+ON pes.idPessoa = tel.idPessoa;	
 
--- Consulta tecnicos de saude que não estão em consulta por data
-SELECT pro.registroProfissional, pes.nome 
-FROM VISITA v, PROFISSIONAL pro
-INNER JOIN TECNICO tec
-	ON pro.registroProfissional = tec.registroProfissional
-INNER JOIN PESSOA pes 
-	ON pro.idPessoa = pes.idPessoa
-WHERE v.dataHoraInicio BETWEEN CURDATE() AND  CURDATE()+1;
-AND pro.idCargo = 5;	
-
--- Consulta tecnicos fora de plantao
-SELECT p.nome, tel.telefone, pro.registroProfissional, pro.idCargo FROM PROFISSIONAL pro 
+-- Consulta tecnicos fora de plantao entre um horario e fim especifico
+SELECT p.nome, tel.telefone, pro.registroProfissional, pro.idCargo 
+FROM PROFISSIONAL pro 
 INNER JOIN PESSOA p
 ON pro.idPessoa = p.idPessoa
 INNER JOIN  TELEFONEPESSOA tel
@@ -106,4 +97,8 @@ WHERE pro.registroProfissional NOT IN
 	AND pro.idCargo = 5
 	)
 AND idCargo = 5;
+
+-- Consulta de Agenda de visitas do tecnico
+SELECT * FROM VISITA v
+WHERE v.registroProfissional = 'DF/9431';
 
