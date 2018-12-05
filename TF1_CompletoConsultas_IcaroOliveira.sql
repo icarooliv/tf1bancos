@@ -61,9 +61,13 @@ ORDER BY e.dataHoraRegistro ASC;
 -- Consulta tecnicos fora de plantao entre um horario e fim especifico
 -- Ao criar uma nova visita para um profissional que se encaixe no intervalo 
 -- de 24h a partir do horário da consulta, é possível verificar todos os tecnicos livres o horário de fim do seu ultimo plantão
--- Por exemplo, ao inserir um registro na tabela VISITA descrita a seguir as 00:16 do dia 05/12/2018, a tecnica de id DF/179653 nao irá aparecer na consulta,
--- o que indica que ela está livre
--- -- 
+-- Por exemplo, ao inserir um registro na tabela VISITA descrita a seguir as 10h do dia 05/12/2018, a tecnica de registro DF/124623
+-- e idCategoria 1 nao irá aparecer na consulta,
+-- o que indica que ela está livre nesse intervalo de tempo
+-- -- QUERY DE INSERÇÃO DE EXEMPLO PARA MUDANÇA NO RESULTADO DA VIEW:
+-- INSERT INTO VISITA (dataHoraInicio, dataHoraFim, idTipoVisita, idPaciente, registroProfissional, idCategoriaProfissional) 
+-- VALUES ('2018-12-05 7:00:00', '2018-12-05 19:00:00', 3, 13, 'DF/124623', 1); 
+
 CREATE VIEW TECNICO_LIVRE_DIA AS
 SELECT p.nome, tel.telefone, pro.registroProfissional, v.dataHoraFim as dataUltimoPlantao 
 FROM PROFISSIONAL pro 
@@ -79,7 +83,7 @@ WHERE pro.registroProfissional NOT IN
 	FROM PROFISSIONAL pro
 	INNER JOIN VISITA v 
 	ON pro.registroProfissional = v.registroProfissional
-	WHERE v.dataHoraInicio BETWEEN NOW() AND NOW() + INTERVAL 1 DAY
+	WHERE v.dataHoraFim BETWEEN NOW() AND NOW() + INTERVAL 1 DAY
 	AND pro.idCargo = 5
 	)
 AND idCargo = 5
